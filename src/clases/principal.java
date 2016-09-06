@@ -28,21 +28,123 @@ public class principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        txtNumerador = new javax.swing.JTextField();
+        txtDenominador = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
+        cmbOperacion = new javax.swing.JComboBox();
+        txtNumerador2 = new javax.swing.JTextField();
+        txtDenominador2 = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
+        txtNumerador3 = new javax.swing.JTextField();
+        txtDenominador3 = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
+        cmbCalcular = new javax.swing.JButton();
+        cmbLimpiar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(txtNumerador, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 70, -1));
+        jPanel1.add(txtDenominador, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 70, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 80, 10));
+
+        jLabel1.setFont(new java.awt.Font("Snap ITC", 0, 24)); // NOI18N
+        jLabel1.setText("Operaciones con fraccionarios");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+
+        cmbOperacion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "suma", "resta", "multiplicacion", "divicion" }));
+        jPanel1.add(cmbOperacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, -1, -1));
+        jPanel1.add(txtNumerador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 70, -1));
+        jPanel1.add(txtDenominador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 70, -1));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 70, 20));
+
+        jLabel2.setText("=");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, -1, -1));
+
+        txtNumerador3.setEditable(false);
+        jPanel1.add(txtNumerador3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, 70, -1));
+
+        txtDenominador3.setEditable(false);
+        jPanel1.add(txtDenominador3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 70, -1));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 70, 10));
+
+        cmbCalcular.setText("Calcular");
+        cmbCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCalcularActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmbCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, -1, -1));
+
+        cmbLimpiar.setText("Limpiar");
+        cmbLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbLimpiarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmbLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(449, 213));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmbCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCalcularActionPerformed
+        int op,n1,n2,d1,d2;
+        
+        Fraccionarios f1,f2,f3=null;
+        op =cmbOperacion.getSelectedIndex();
+        n1 = Integer. parseInt (txtNumerador .getText());
+        d1 = Integer. parseInt (txtDenominador .getText());
+        n2 = Integer. parseInt (txtNumerador2 .getText());
+       d2 = Integer. parseInt (txtDenominador2 .getText());
+       
+       f1= new Fraccionarios (n1,d1);
+       f2 =new   Fraccionarios (n2,d2);
+       switch (op){
+           case 0:
+               f3 =f1. sumar (f2);
+             
+               break;
+           case 1:
+               f3 = f1. restar (f2);
+               
+               break;
+       }
+           txtNumerador3.setText(""+f3.getNumerador());
+               txtDenominador3.setText(""+f3.getDenominador());  
+               
+    }//GEN-LAST:event_cmbCalcularActionPerformed
+
+    private void cmbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbLimpiarActionPerformed
+        // TODO add your handling code here:
+        txtNumerador.setText("");
+        txtDenominador.setText("");
+        txtNumerador2.setText("");
+        txtDenominador2.setText("");
+        txtNumerador3.setText("");
+        txtDenominador3.setText("");
+        txtNumerador.requestFocusInWindow();
+        cmbOperacion.setSelectedIndex(0);
+        
+    }//GEN-LAST:event_cmbLimpiarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -80,5 +182,20 @@ public class principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cmbCalcular;
+    private javax.swing.JButton cmbLimpiar;
+    private javax.swing.JComboBox cmbOperacion;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JTextField txtDenominador;
+    private javax.swing.JTextField txtDenominador2;
+    private javax.swing.JTextField txtDenominador3;
+    private javax.swing.JTextField txtNumerador;
+    private javax.swing.JTextField txtNumerador2;
+    private javax.swing.JTextField txtNumerador3;
     // End of variables declaration//GEN-END:variables
 }
